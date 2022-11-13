@@ -978,7 +978,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 50
+        scalar: 15
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4912,7 +4912,7 @@ Transform:
   m_Children:
   - {fileID: 1186128637818610966}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7469088147158208080
 AudioSource:
