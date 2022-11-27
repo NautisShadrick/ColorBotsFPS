@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGunScript : MonoBehaviour
 {
-    public float dmage = 10f;
+    public float dmage = 5f;
     public float fireRate = 15f;
     public float impactForce = 30f;
     public float kickBackForce;
@@ -57,6 +57,17 @@ public class PlayerGunScript : MonoBehaviour
                     GameObject newHitPart = Instantiate(hitParticle, hit.point, hitParticle.transform.rotation);
                     newHitPart.transform.LookAt(transform.position, newHitPart.transform.up);
                     Destroy(newHitPart, 1f);
+
+                    if(hit.transform.gameObject.GetComponent<Rigidbody>())
+                    {
+                        hit.transform.gameObject.GetComponent<Rigidbody>().AddForceAtPosition(camController.transform.forward * impactForce,hit.point,ForceMode.Impulse);
+                    }
+
+                    if(hit.transform.gameObject.GetComponent<ExplosiveHealth>())
+                    {
+                        hit.transform.gameObject.GetComponent<ExplosiveHealth>().Damage(dmage);
+                    }
+
                 }
 
                 camController.KickBack(kickBackForce);
